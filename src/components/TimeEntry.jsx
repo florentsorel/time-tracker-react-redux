@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { getProjectById } from '../selectors'
 
 const TimeEntry = ({
   entry,
@@ -29,12 +30,8 @@ TimeEntry.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const project = state.projects.find(item => {
-    return item.id === ownProps.entry.projectId
-  });
-
   return {
-    project
+    project: getProjectById(state, ownProps.entry.projectId)
   }
 }
 
