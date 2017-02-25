@@ -7,7 +7,7 @@ const initialState = [
     startTime: '10:02',
     endTime: '11:08',
     text: 'Install react + redux',
-    projectId: null,
+    projectId: 1,
   }
 ]
 

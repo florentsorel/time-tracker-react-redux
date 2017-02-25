@@ -9,9 +9,8 @@ const TimeEntriesList = ({
     <div>
       {timeEntries.map(timeEntry =>
         <TimeEntry
-          entryId={timeEntry.id}
           key={timeEntry.id}
-          entry={timeEntry}/>
+          entry={timeEntry} />
       )}
     </div>
   )

@@ -2,26 +2,43 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 const TimeEntry = ({
-  id,
-  text
+  entry,
+  project
 }) => {
   return (
     <div className="time-entry">
-      {text}
+      <div className="text">
+        {entry.text}
+      </div>
+      {
+        project &&
+          <div className="project">
+            {project.name}
+          </div>
+      }
     </div>
   )
 }
 
 TimeEntry.propTypes = {
-  id: PropTypes.number.isRequired,
-  timeEntry: PropTypes.object.isRequired,
+  entry: PropTypes.shape({
+    id:  React.PropTypes.number,
+    text: React.PropTypes.string
+  }),
 }
 
-const Container = connect((state, ownProps) => {
-  console.log(ownProps)
-  return ({
-    project: state.projects[state.entries[ownProps.entryId].projectId]
-  })
-})(TimeEntry);
+const mapStateToProps = (state, ownProps) => {
+  const project = state.projects.find(item => {
+    return item.id === ownProps.entry.projectId
+  });
+
+  return {
+    project
+  }
+}
+
+const Container = connect(
+  mapStateToProps
+)(TimeEntry);
 
 export default Container
