@@ -22,8 +22,9 @@ const TimeEntry = ({
 
 TimeEntry.propTypes = {
   entry: PropTypes.shape({
-    id:  React.PropTypes.number,
-    text: React.PropTypes.string
+    id:  PropTypes.number,
+    text: PropTypes.string,
+    projectId: PropTypes.number
   }),
 }
 
