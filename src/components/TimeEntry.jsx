@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { getProjectById } from '../selectors'
 
 const TimeEntry = ({
   entry,
@@ -23,20 +21,13 @@ const TimeEntry = ({
 
 TimeEntry.propTypes = {
   entry: PropTypes.shape({
-    id:  PropTypes.number,
+    id: PropTypes.number,
     text: PropTypes.string,
-    projectId: PropTypes.number
+  }),
+  project: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
   }),
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    project: getProjectById(state, ownProps.entry.projectId)
-  }
-}
-
-const Container = connect(
-  mapStateToProps
-)(TimeEntry);
-
-export default Container
+export default TimeEntry
