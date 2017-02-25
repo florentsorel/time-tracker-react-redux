@@ -10,4 +10,8 @@ const TimeEntry = ({
   )
 }
 
+TimeEntry.propTypes = {
+  text: PropTypes.string
+}
+
 export default TimeEntry
