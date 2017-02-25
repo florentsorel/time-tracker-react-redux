@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 const TimeEntry = ({
+  id,
   text
 }) => {
   return (
@@ -11,7 +13,15 @@ const TimeEntry = ({
 }
 
 TimeEntry.propTypes = {
-  text: PropTypes.string
+  id: PropTypes.number.isRequired,
+  timeEntry: PropTypes.object.isRequired,
 }
 
-export default TimeEntry
+const Container = connect((state, ownProps) => {
+  console.log(ownProps)
+  return ({
+    project: state.projects[state.entries[ownProps.entryId].projectId]
+  })
+})(TimeEntry);
+
+export default Container
