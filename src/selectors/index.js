@@ -1,4 +1,4 @@
-import * as timeEntriesSelector from './timeEntries'
+import * as timeEntriesSelector from './projects'
 
-// Time entries selector
+// Projects selector
 export const getProjectById = (state, projectId) => timeEntriesSelector.getProjectById(state, projectId)
