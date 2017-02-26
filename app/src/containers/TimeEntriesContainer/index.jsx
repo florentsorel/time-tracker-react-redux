@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import TimeEntryContainer from './TimeEntryContainer.jsx'
 
-const TimeEntriesList = ({
+const TimeEntriesContainer = ({
   timeEntries
 }) => {
   return (
-    <div>
+    <div className="container">
       {timeEntries.map(timeEntry =>
         <TimeEntryContainer
           key={timeEntry.id}
@@ -16,7 +16,7 @@ const TimeEntriesList = ({
   )
 }
 
-TimeEntriesList.propTypes = {
+TimeEntriesContainer.propTypes = {
   timeEntries: PropTypes.array.isRequired
 }
 
@@ -26,6 +26,6 @@ const mapStateToProps = ({ timeEntries }) => ({
 
 const TimeEntries = connect(
   mapStateToProps
-)(TimeEntriesList)
+)(TimeEntriesContainer)
 
 export default TimeEntries

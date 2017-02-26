@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TimeEntries from '../containers/TimeEntries.jsx'
+import TimeEntries from 'containers/TimeEntriesContainer'
 
 const App = () => <TimeEntries/>
 

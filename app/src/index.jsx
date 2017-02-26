@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'redux'
-import Root from './components/Root.jsx'
-import configureStore from './store/configureStore'
+import Root from 'components/Root'
+import configureStore from './store'
 
 const store = configureStore()
 

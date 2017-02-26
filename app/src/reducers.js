@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import timeEntries from './timeEntries'
-import projects from './projects'
+import timeEntries from 'containers/TimeEntriesContainer/reducer'
+import projects from 'containers/ProjectsContainer/reducer'
 
 const rootReducer = combineReducers({
   timeEntries,

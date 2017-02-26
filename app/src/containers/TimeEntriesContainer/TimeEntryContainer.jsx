@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { getProjectById } from '../selectors'
-import TimeEntry from '../components/TimeEntry.jsx'
+import { getProjectById } from 'selectors'
+import TimeEntry from 'components/TimeEntry'
 
 const TimeEntryContainer = ({
   entry,

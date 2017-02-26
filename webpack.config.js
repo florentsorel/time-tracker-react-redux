@@ -2,19 +2,20 @@ const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const ExtractTextPluginConfig = new ExtractTextPlugin('css/app.css')
+const ROOT_PATH = path.resolve(__dirname);
 
+const ExtractTextPluginConfig = new ExtractTextPlugin('css/app.css')
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   title: "Time Tracker",
-  template: __dirname + '/src/index.html',
+  template: __dirname + '/index.html',
   filename: 'index.html',
   inject: 'body',
 });
 
 module.exports = {
   entry: [
-    './src/index.jsx',
-    './styles/main.scss',
+    './app/src/index.jsx',
+    './app/styles/main.scss',
   ],
   output: {
     path: path.join(__dirname, 'public'),
@@ -40,6 +41,15 @@ module.exports = {
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
       },
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      components: path.resolve(ROOT_PATH, 'app/src/components'),
+      containers: path.resolve(ROOT_PATH, 'app/src/containers'),
+      selectors: path.resolve(ROOT_PATH, 'app/src/selectors'),
+      styles: path.resolve(ROOT_PATH, 'app/styles'),
+    },
   },
   plugins: [
     HtmlWebpackPluginConfig,
