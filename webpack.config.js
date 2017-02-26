@@ -48,7 +48,6 @@ module.exports = {
       layouts: path.resolve(ROOT_PATH, 'app/src/layouts'),
       components: path.resolve(ROOT_PATH, 'app/src/components'),
       containers: path.resolve(ROOT_PATH, 'app/src/containers'),
-      routes: path.resolve(ROOT_PATH, 'app/src/routes'),
       selectors: path.resolve(ROOT_PATH, 'app/src/selectors'),
       styles: path.resolve(ROOT_PATH, 'app/styles'),
     },
