@@ -1,4 +1,4 @@
-import { ADD_TIME_ENTRY } from '../constants/ActionTypes'
+import { ADD_TIME_ENTRY } from '../constants/timeEntries'
 
 const initialState = [
   {
