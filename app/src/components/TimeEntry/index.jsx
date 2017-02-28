@@ -5,17 +5,23 @@ const TimeEntry = ({
   project
 }) => {
   return (
-    <div className="time-entry">
-      <div className="text">
+    <li className="time-entry">
+      <div className="time-entry-text">
         {entry.text}
       </div>
       {
         project &&
-          <div className="project">
-            {project.name}
+          <div className="time-entry-selected-project">
+            <span style={{color: '#4BAA72'}}>
+              <span className="time-entry-selected-project-color"></span>
+              {project.name}
+            </span>
           </div>
       }
-    </div>
+      <div className="time-entry-duration-container">
+        02:02:02
+      </div>
+    </li>
   )
 }
 

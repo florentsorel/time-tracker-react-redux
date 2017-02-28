@@ -3,20 +3,23 @@ import { Link } from 'react-router'
 import Sidebar from 'components/Sidebar'
 
 const MainLayout = ({ children }) => (
-  <div>
+  <div className="flexbox-container">
     <Sidebar>
-      <ul>
-        <li>
-          <Link to="/">
-            Timer
+      <div className="sidebar-logo">
+        Time Tracker
+      </div>
+      <div className="sidebar-menu">
+        <div className="sidebar-menu-item">
+          <Link to="/" className="sidebar-menu-item-link" activeClassName="mod-active" onlyActiveOnIndex={true}>
+            <span>Timer</span>
           </Link>
-        </li>
-        <li>
-          <Link to="/projects">
-            Projets
+        </div>
+        <div className="sidebar-menu-item">
+          <Link to="/projects" className="sidebar-menu-item-link" activeClassName="mod-active">
+            <span>Projets</span>
           </Link>
-        </li>
-      </ul>
+        </div>
+      </div>
     </Sidebar>
     {children}
   </div>

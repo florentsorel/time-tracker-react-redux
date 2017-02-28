@@ -6,13 +6,13 @@ const TimeEntriesContainer = ({
   timeEntries
 }) => {
   return (
-    <div className="container">
+    <ul className="time-entries-list">
       {timeEntries.map(timeEntry =>
         <TimeEntryContainer
           key={timeEntry.id}
           entry={timeEntry} />
       )}
-    </div>
+    </ul>
   )
 }
 
