@@ -8,3 +8,16 @@
     flex-direction: row;
     box-orient: horizontal;
 }
+
+.valign-center {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.btn-icon {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}

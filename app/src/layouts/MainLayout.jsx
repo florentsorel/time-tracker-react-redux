@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import Sidebar from 'components/Sidebar'
+import TimerContainer from 'components/TimerContainer'
 
 const MainLayout = ({ children }) => (
   <div className="flexbox-container">
@@ -21,7 +22,9 @@ const MainLayout = ({ children }) => (
         </div>
       </div>
     </Sidebar>
-    {children}
+    <TimerContainer>
+      {children}
+    </TimerContainer>
   </div>
 )
 
