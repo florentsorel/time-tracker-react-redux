@@ -1,18 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { addEntryAction } from './actions'
+import { addTimeEntry  } from './actions'
 import NewTimeEntry from 'components/NewTimeEntry'
 
-class NewTimeEntryContainer extends Component {
+const NewTimeEntryContainer = ({ addTimeEntry }) => (
+  <NewTimeEntry onStop={addTimeEntry} />
+)
 
-  render() {
-    return (
-      <NewTimeEntry onStop={addEntryAction()} />
-    )
-  }
-
-}
-
-const Container = connect()(NewTimeEntryContainer)
-
-export default Container
+export default connect(null, { addTimeEntry })(NewTimeEntryContainer)

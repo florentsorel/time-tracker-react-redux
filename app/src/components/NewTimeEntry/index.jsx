@@ -1,12 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
 import TimeEntryInput from './TimeEntryInput.jsx'
 import TimerContainer from './TimerContainer.jsx'
 
-const NewTimeEntry = ({ onStop }) => (
-  <div className="new-time-entry">
-    <TimeEntryInput />
-    <TimerContainer onStop={() => console.log('stop')} onPlay={() => console.log('play')} />
-  </div>
-)
+class NewTimeEntry extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      value: ''
+    }
+
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(value) {
+    this.setState({value: value})
+
+
+  }
+
+  render() {
+    return (
+      <div className="new-time-entry">
+        <TimeEntryInput onChange={this.handleChange} />
+        <TimerContainer onStop={() => this.props.onStop(this.state.value)} onPlay={() => console.log('play')} />
+      </div>
+    )
+  }
+
+}
 
 export default NewTimeEntry
