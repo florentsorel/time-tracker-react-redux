@@ -1,12 +1,11 @@
 import React from 'react'
 import TimeEntryInput from './TimeEntryInput.jsx'
-import Timer from './Timer.jsx'
+import TimerContainer from './TimerContainer.jsx'
 
-const NewTimeEntry = () => (
+const NewTimeEntry = ({ onStop }) => (
   <div className="new-time-entry">
     <TimeEntryInput />
-    <Timer />
-
+    <TimerContainer onStop={() => console.log('stop')} onPlay={() => console.log('play')} />
   </div>
 )
 

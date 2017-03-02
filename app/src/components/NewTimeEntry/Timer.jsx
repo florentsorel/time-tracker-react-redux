@@ -1,13 +1,12 @@
-import React from 'react'
-import TimerButton from './TimerButton.jsx'
+import React, { Component } from 'react'
 
-const Timer = () => (
-  <div className="new-time-entry-timer valign-center">
-    <div className="new-time-entry-duration">
-      0:00:00
-    </div>
-    <TimerButton />
-  </div>
-)
+class Timer extends Component {
+
+  render() {
+    return (
+      <span>0:00:00</span>
+    )
+  }
+}
 
 export default Timer

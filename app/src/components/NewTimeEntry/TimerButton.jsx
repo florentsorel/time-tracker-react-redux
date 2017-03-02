@@ -3,8 +3,8 @@ import classNames from 'classnames'
 
 class TimerButton extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       isStarted: false,
@@ -14,8 +14,16 @@ class TimerButton extends Component {
   }
 
   handleClick() {
+    const { onStop, onPlay } = this.props
     this.setState({
       isStarted: !this.state.isStarted,
+    }, () => {
+      if (this.state.isStarted === false) {
+        onStop()
+      }
+      else {
+        onPlay()
+      }
     })
   }
 

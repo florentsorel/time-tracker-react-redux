@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import TimeEntryContainer from './TimeEntryContainer.jsx'
-import NewTimeEntry from 'components/NewTimeEntry'
+import NewTimeEntryContainer from 'containers/NewTimeEntryContainer'
 
 const TimeEntriesContainer = ({
   timeEntries
 }) => {
   return (
     <div>
-      <NewTimeEntry />
+      <NewTimeEntryContainer />
       <ul className="time-entries-list">
         {timeEntries.map(timeEntry =>
           <TimeEntryContainer
