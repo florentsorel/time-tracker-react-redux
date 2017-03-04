@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import TimeEntryContainer from './TimeEntryContainer.jsx'
-import NewTimeEntryContainer from 'containers/NewTimeEntryContainer'
+import NewTimeEntryContainer from './NewTimeEntryContainer'
 
 const TimeEntriesContainer = ({
   timeEntries
