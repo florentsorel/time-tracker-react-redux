@@ -14,17 +14,11 @@ class TimerButton extends Component {
   }
 
   handleClick() {
-    const { onStop, onStart } = this.props
     this.setState({
       isStarted: !this.state.isStarted,
-    }, () => {
-      if (this.state.isStarted === false) {
-        onStop()
-      }
-      else {
-        onStart()
-      }
     })
+
+    this.props.onClick()
   }
 
   render() {

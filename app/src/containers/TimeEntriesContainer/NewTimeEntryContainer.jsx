@@ -4,7 +4,7 @@ import { addTimeEntry  } from './actions'
 import NewTimeEntry from 'components/NewTimeEntry'
 
 const NewTimeEntryContainer = ({ addTimeEntry }) => (
-  <NewTimeEntry onStop={addTimeEntry} />
+  <NewTimeEntry onStopClick={addTimeEntry} />
 )
 
 export default connect(null, { addTimeEntry })(NewTimeEntryContainer)

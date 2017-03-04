@@ -22,7 +22,7 @@ class NewTimeEntry extends Component {
     return (
       <div className="new-time-entry">
         <TimeEntryInput onChange={this.handleChange} />
-        <TimerContainer onStop={() => this.props.onStop(this.state.value, '00:15:08')} />
+        <TimerContainer onStopClick={() => this.props.onStopClick(this.state.value, '00:15:08')} />
       </div>
     )
   }

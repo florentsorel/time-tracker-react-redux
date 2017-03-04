@@ -11,22 +11,17 @@ class TimerContainer extends Component {
       isRunning: false,
     }
 
-    this.handleStart = this.handleStart.bind(this)
-    this.handleStop = this.handleStop.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleStart() {
+  handleClick() {
     this.setState({
-      isRunning: true,
+      isRunning: !this.state.isRunning,
+    }, () => {
+      if (this.state.isRunning === false) {
+        this.props.onStopClick()
+      }
     })
-  }
-
-  handleStop() {
-    this.setState({
-      isRunning: false
-    })
-
-    this.props.onStop()
   }
 
   render() {
@@ -35,7 +30,7 @@ class TimerContainer extends Component {
         <div className="new-time-entry-duration">
           <Timer isRunning={this.state.isRunning} />
         </div>
-        <TimerButton onStop={this.handleStop} onStart={this.handleStart}/>
+        <TimerButton onClick={this.handleClick}/>
       </div>
     )
   }
