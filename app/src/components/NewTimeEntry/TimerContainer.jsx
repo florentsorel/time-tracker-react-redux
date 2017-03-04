@@ -6,15 +6,36 @@ class TimerContainer extends Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {
+      isRunning: false,
+    }
+
+    this.handleStart = this.handleStart.bind(this)
+    this.handleStop = this.handleStop.bind(this)
+  }
+
+  handleStart() {
+    this.setState({
+      isRunning: true,
+    })
+  }
+
+  handleStop() {
+    this.setState({
+      isRunning: false
+    })
+
+    this.props.onStop()
   }
 
   render() {
     return (
       <div className="new-time-entry-timer valign-center">
         <div className="new-time-entry-duration">
-          <Timer />
+          <Timer isRunning={this.state.isRunning} />
         </div>
-        <TimerButton onStop={this.props.onStop} onPlay={this.props.onPlay}/>
+        <TimerButton onStop={this.handleStop} onStart={this.handleStart}/>
       </div>
     )
   }

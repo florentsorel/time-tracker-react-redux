@@ -16,15 +16,13 @@ class NewTimeEntry extends Component {
 
   handleChange(value) {
     this.setState({value: value})
-
-
   }
 
   render() {
     return (
       <div className="new-time-entry">
         <TimeEntryInput onChange={this.handleChange} />
-        <TimerContainer onStop={() => this.props.onStop(this.state.value)} onPlay={() => console.log('play')} />
+        <TimerContainer onStop={() => this.props.onStop(this.state.value, '00:15:08')} />
       </div>
     )
   }

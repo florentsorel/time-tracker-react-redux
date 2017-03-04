@@ -14,7 +14,7 @@ class TimerButton extends Component {
   }
 
   handleClick() {
-    const { onStop, onPlay } = this.props
+    const { onStop, onStart } = this.props
     this.setState({
       isStarted: !this.state.isStarted,
     }, () => {
@@ -22,7 +22,7 @@ class TimerButton extends Component {
         onStop()
       }
       else {
-        onPlay()
+        onStart()
       }
     })
   }

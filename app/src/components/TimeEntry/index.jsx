@@ -19,7 +19,7 @@ const TimeEntry = ({
           </div>
       }
       <div className="time-entry-duration-container">
-        02:02:02
+        {entry.duration}
       </div>
     </li>
   )
