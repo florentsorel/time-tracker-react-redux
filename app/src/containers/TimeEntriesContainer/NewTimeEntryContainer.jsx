@@ -7,4 +7,12 @@ const NewTimeEntryContainer = ({ addTimeEntry }) => (
   <NewTimeEntry onStopClick={addTimeEntry} />
 )
 
-export default connect(null, { addTimeEntry })(NewTimeEntryContainer)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTimeEntry: (value, duration) => {
+      dispatch(addTimeEntry(value, duration))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NewTimeEntryContainer)
