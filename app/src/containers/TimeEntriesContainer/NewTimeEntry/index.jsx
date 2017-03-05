@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addTimeEntry  } from '../actions'
 import TimeEntryInput from './TimeEntryInput.jsx'
 import TimerContainer from './TimerContainer.jsx'
 
@@ -28,4 +30,5 @@ class NewTimeEntry extends Component {
 
 }
 
-export default NewTimeEntry
+const actions = {onStopClick : addTimeEntry};
+export default connect(null, actions)(NewTimeEntry);
