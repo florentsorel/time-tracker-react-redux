@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import TimeEntry from './TimeEntry'
 import NewTimeEntry from './NewTimeEntry'
 
-const TimeEntriesContainer = ({
+const TimeEntries = ({
   timeEntries
 }) => {
   return (
@@ -20,7 +20,7 @@ const TimeEntriesContainer = ({
   )
 }
 
-TimeEntriesContainer.propTypes = {
+TimeEntries.propTypes = {
   timeEntries: PropTypes.array.isRequired
 }
 
@@ -28,8 +28,6 @@ const mapStateToProps = ({ timeEntries }) => ({
   timeEntries
 })
 
-const TimeEntries = connect(
+export default connect(
   mapStateToProps
-)(TimeEntriesContainer)
-
-export default TimeEntries
+)(TimeEntries)

@@ -3,12 +3,12 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import MainLayout from 'layouts/MainLayout'
 import NotFound from 'components/NotFound'
 
-import TimeEntriesContainer from 'containers/TimeEntriesContainer'
+import TimeEntries from 'containers/TimeEntries'
 
 const Routes = () => (
   <Router history={browserHistory}>
     <Route path="/" component={MainLayout}>
-      <IndexRoute component={TimeEntriesContainer} />
+      <IndexRoute component={TimeEntries} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>

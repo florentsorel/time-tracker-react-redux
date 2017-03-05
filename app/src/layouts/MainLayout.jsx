@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import Sidebar from 'components/Sidebar'
-import TimerContainer from 'components/TimerContainer'
+import TimerContainer from 'containers/TimeEntries/TimerContainer'
 
 const MainLayout = ({ children }) => (
   <div className="flexbox-container">
