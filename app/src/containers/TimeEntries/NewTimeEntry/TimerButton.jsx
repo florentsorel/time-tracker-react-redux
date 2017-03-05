@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { toggleTimerStatus  } from '../actions'
 import classNames from 'classnames'
 
 class TimerButton extends Component {
@@ -7,7 +9,7 @@ class TimerButton extends Component {
     super(props)
 
     this.state = {
-      isStarted: false,
+      isStarted: this.props.isStarted,
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -19,6 +21,7 @@ class TimerButton extends Component {
     })
 
     this.props.onClick()
+    this.props.toggleStatus(this.state.isStarted)
   }
 
   render() {
@@ -38,4 +41,4 @@ class TimerButton extends Component {
 
 }
 
-export default TimerButton
+export default connect((state) => ({ isStarted: state.timerStatus }), { toggleStatus: toggleTimerStatus })(TimerButton)

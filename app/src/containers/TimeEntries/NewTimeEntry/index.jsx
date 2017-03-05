@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addTimeEntry  } from '../actions'
+import { addTimeEntry, addCurrentTextEntry  } from '../actions'
 import TimeEntryInput from './TimeEntryInput.jsx'
 import TimerContainer from './TimerContainer.jsx'
 
@@ -14,15 +14,22 @@ class NewTimeEntry extends Component {
       value: '',
       duration: '00:00:00'
     }
+
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(value) {
+    this.setState({value: value})
+    this.props.onInputChange(value)
   }
 
   render() {
     return (
       <div className="new-time-entry">
         <TimeEntryInput
-          onChange={(value) => this.setState({value: value})} />
+          onChange={this.handleChange} value={this.props.value} />
         <TimerContainer
-          onStopClick={() => this.props.onStopClick(this.state.value, this.state.duration)}
+          onStopClick={() => this.props.onStopClick(this.props.value, this.state.duration)}
           onTimeChange={(value) => this.setState({duration: value})} />
       </div>
     )
@@ -30,5 +37,6 @@ class NewTimeEntry extends Component {
 
 }
 
-const actions = {onStopClick : addTimeEntry};
-export default connect(null, actions)(NewTimeEntry);
+const props = (state) => ({ value: state.currentTextEntry })
+const actions = {onStopClick: addTimeEntry, onInputChange: addCurrentTextEntry}
+export default connect(props, actions)(NewTimeEntry);

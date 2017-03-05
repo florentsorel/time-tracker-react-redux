@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { addCurrentTimeEntry  } from '../actions'
 
 class Timer extends Component {
 
@@ -61,6 +63,7 @@ class Timer extends Component {
     }
 
     this.update(hours, seconds, minutes);
+    this.props.addCurrentTimeEntry(this.renderTime())
   }
 
   update(hours, seconds, minutes) {
@@ -101,4 +104,5 @@ Timer.defaultProps = {
   seconds: 0,
 }
 
-export default Timer
+const actions = { addCurrentTimeEntry }
+export default connect(null, actions)(Timer)
