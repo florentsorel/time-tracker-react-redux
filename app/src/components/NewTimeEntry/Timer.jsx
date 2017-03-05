@@ -18,6 +18,10 @@ class Timer extends Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.isRunning === this.props.isRunning) {
       return false;
