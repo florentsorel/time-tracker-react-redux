@@ -1,4 +1,4 @@
-import { ADD_TIME_ENTRY, ADD_CURRENT_TIME, ADD_CURRENT_TEXT, TOGGLE_TIMER_STATUS } from './constants'
+import { ADD_TIME_ENTRY, ADD_CURRENT_TIME, RESET_CURRENT_TIME, ADD_CURRENT_TEXT, TOGGLE_TIMER_STATUS } from './constants'
 
 const initialState = [
   {
@@ -39,6 +39,7 @@ export function currentTimeEntry(state = {
 }, action) {
   switch (action.type) {
     case ADD_CURRENT_TIME:
+    case RESET_CURRENT_TIME:
       return {...state, duration: action.duration }
     case ADD_CURRENT_TEXT:
       return {...state, text: action.text }

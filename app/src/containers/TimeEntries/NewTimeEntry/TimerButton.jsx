@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { toggleTimerStatus  } from '../actions'
+import { toggleTimerStatus } from '../actions'
 import classNames from 'classnames'
 
 class TimerButton extends Component {

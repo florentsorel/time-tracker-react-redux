@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { resetCurrentTimeEntry } from '../actions'
 import Timer from './Timer.jsx'
 import TimerButton from './TimerButton.jsx'
 
@@ -22,6 +24,7 @@ class TimerContainer extends Component {
     }, () => {
       if (this.state.isRunning === false) {
         this.props.onStopClick()
+        this.props.resetCurrentTimeEntry(null)
       }
     })
   }
@@ -42,4 +45,4 @@ class TimerContainer extends Component {
   }
 }
 
-export default TimerContainer
+export default connect(null, { resetCurrentTimeEntry })(TimerContainer)
