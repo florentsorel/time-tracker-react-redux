@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { getProjectById } from 'selectors'
 
 const TimeEntry = ({
   entry,
@@ -36,4 +38,10 @@ TimeEntry.propTypes = {
   }),
 }
 
-export default TimeEntry
+const mapStateToProps = (state, ownProps) => {
+  return {
+    project: getProjectById(state, ownProps.entry.projectId)
+  }
+}
+
+export default connect(mapStateToProps)(TimeEntry)
