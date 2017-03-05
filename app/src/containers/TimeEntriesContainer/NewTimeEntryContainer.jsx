@@ -3,16 +3,5 @@ import { connect } from 'react-redux'
 import { addTimeEntry  } from './actions'
 import NewTimeEntry from 'components/NewTimeEntry'
 
-const NewTimeEntryContainer = ({ addTimeEntry }) => (
-  <NewTimeEntry onStopClick={addTimeEntry} />
-)
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTimeEntry: (value, duration) => {
-      dispatch(addTimeEntry(value, duration))
-    }
-  }
-}
-
-export default connect(null, mapDispatchToProps)(NewTimeEntryContainer)
+const actions = {onStopClick : addTimeEntry};
+export default connect(null, actions)(NewTimeEntry);
