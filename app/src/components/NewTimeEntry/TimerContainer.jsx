@@ -9,9 +9,11 @@ class TimerContainer extends Component {
 
     this.state = {
       isRunning: false,
+      duration: '00:00:00'
     }
 
     this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleClick() {
@@ -24,11 +26,15 @@ class TimerContainer extends Component {
     })
   }
 
+  handleChange(duration) {
+    this.props.onTimeChange(duration)
+  }
+
   render() {
     return (
       <div className="new-time-entry-timer valign-center">
         <div className="new-time-entry-duration">
-          <Timer isRunning={this.state.isRunning} />
+          <Timer isRunning={this.state.isRunning} onChange={this.handleChange}/>
         </div>
         <TimerButton onClick={this.handleClick}/>
       </div>

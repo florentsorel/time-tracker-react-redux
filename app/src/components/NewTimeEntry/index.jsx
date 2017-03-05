@@ -7,22 +7,21 @@ class NewTimeEntry extends Component {
   constructor(props) {
     super(props)
 
+    // @todo convertir la durée en seconde écoulé
     this.state = {
-      value: ''
+      value: '',
+      duration: '00:00:00'
     }
-
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(value) {
-    this.setState({value: value})
   }
 
   render() {
     return (
       <div className="new-time-entry">
-        <TimeEntryInput onChange={this.handleChange} />
-        <TimerContainer onStopClick={() => this.props.onStopClick(this.state.value, '00:15:08')} />
+        <TimeEntryInput
+          onChange={(value) => this.setState({value: value})} />
+        <TimerContainer
+          onStopClick={() => this.props.onStopClick(this.state.value, this.state.duration)}
+          onTimeChange={(value) => this.setState({duration: value})} />
       </div>
     )
   }

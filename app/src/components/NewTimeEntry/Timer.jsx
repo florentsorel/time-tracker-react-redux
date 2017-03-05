@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 class Timer extends Component {
 
@@ -6,9 +6,9 @@ class Timer extends Component {
     super(props)
 
     this.state = {
-      hours: 0,
-      minutes: 0,
-      seconds: 0
+      hours: this.props.hours,
+      minutes: this.props.minutes,
+      seconds: this.props.seconds
     }
   }
 
@@ -65,6 +65,8 @@ class Timer extends Component {
       seconds: seconds,
       minutes: minutes
     });
+
+    this.props.onChange(this.renderTime())
   }
 
   zeroPad(value) {
@@ -74,7 +76,6 @@ class Timer extends Component {
   renderTime() {
     const {hours, minutes, seconds} = this.state
     return `${this.zeroPad(hours)}:${this.zeroPad(minutes)}:${this.zeroPad(seconds)}`
-
   }
 
   render() {
@@ -82,6 +83,18 @@ class Timer extends Component {
       <span>{this.renderTime()}</span>
     )
   }
+}
+
+Timer.propTypes = {
+  hours: PropTypes.number.isRequired,
+  minutes: PropTypes.number.isRequired,
+  seconds: PropTypes.number.isRequired,
+}
+
+Timer.defaultProps = {
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
 }
 
 export default Timer
