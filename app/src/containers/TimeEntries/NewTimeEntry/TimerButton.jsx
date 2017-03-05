@@ -41,4 +41,4 @@ class TimerButton extends Component {
 
 }
 
-export default connect((state) => ({ isStarted: state.timerStatus }), { toggleStatus: toggleTimerStatus })(TimerButton)
+export default connect((state) => ({ isStarted: state.currentTimeEntry.isRunning }), { toggleStatus: toggleTimerStatus })(TimerButton)

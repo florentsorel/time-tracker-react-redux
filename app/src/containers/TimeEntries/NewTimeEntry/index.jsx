@@ -37,6 +37,6 @@ class NewTimeEntry extends Component {
 
 }
 
-const props = (state) => ({ value: state.currentTextEntry })
+const props = (state) => ({ value: state.currentTimeEntry.text })
 const actions = {onStopClick: addTimeEntry, onInputChange: addCurrentTextEntry}
 export default connect(props, actions)(NewTimeEntry);

@@ -32,28 +32,18 @@ export function timeEntries(state = initialState, action) {
   }
 }
 
-export function currentTimeEntry(state = '', action) {
+export function currentTimeEntry(state = {
+  text: null,
+  duration: null,
+  isRunning: false,
+}, action) {
   switch (action.type) {
     case ADD_CURRENT_TIME:
-      return action.duration
-    default:
-      return state
-  }
-}
-
-export function currentTextEntry(state = '', action) {
-  switch (action.type) {
+      return {...state, duration: action.duration }
     case ADD_CURRENT_TEXT:
-      return action.text
-    default:
-      return state
-  }
-}
-
-export function timerStatus(state = false, action) {
-  switch (action.type) {
+      return {...state, text: action.text }
     case TOGGLE_TIMER_STATUS:
-      return !action.status
+      return {...state, isRunning: !action.isRunning }
     default:
       return state
   }

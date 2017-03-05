@@ -16,7 +16,7 @@ export const addCurrentTextEntry = (text) => ({
   text
 })
 
-export const toggleTimerStatus = (status) => ({
+export const toggleTimerStatus = (isRunning) => ({
   type: TOGGLE_TIMER_STATUS,
-  status
+  isRunning
 })
