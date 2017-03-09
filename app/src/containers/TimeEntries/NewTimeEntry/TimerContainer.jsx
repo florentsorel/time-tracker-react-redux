@@ -1,43 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { resetCurrentTimeEntry } from '../actions'
+import { resetCurrentTimeEntry, stopTimer, startTimer } from '../actions'
 import Timer from './Timer.jsx'
 import TimerButton from './TimerButton.jsx'
 
 class TimerContainer extends Component {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      isRunning: false,
-      duration: '00:00:00'
-    }
+  constructor() {
+    super()
 
     this.handleClick = this.handleClick.bind(this)
-    this.handleChange = this.handleChange.bind(this)
   }
 
   handleClick() {
-    this.setState({
-      isRunning: !this.state.isRunning,
-    }, () => {
-      if (this.state.isRunning === false) {
-        this.props.onStopClick()
-        this.props.resetCurrentTimeEntry(null)
-      }
-    })
-  }
-
-  handleChange(duration) {
-    this.props.onTimeChange(duration)
+    const props = this.props
+    if (props.isRunning === true) {
+      props.stopTimer(new Date())
+      props.onStopClick()
+      props.resetCurrentTimeEntry()
+    }
+    else {
+      props.startTimer(new Date())
+    }
   }
 
   render() {
+    const { isRunning } = this.props
     return (
       <div className="new-time-entry-timer valign-center">
         <div className="new-time-entry-duration">
-          <Timer isRunning={this.state.isRunning} onChange={this.handleChange}/>
+          <Timer isRunning={isRunning} />
         </div>
         <TimerButton onClick={this.handleClick}/>
       </div>
@@ -45,4 +37,4 @@ class TimerContainer extends Component {
   }
 }
 
-export default connect(null, { resetCurrentTimeEntry })(TimerContainer)
+export default connect((state) => ({ isRunning: state.currentTimeEntry.isRunning}), { resetCurrentTimeEntry, stopTimer, startTimer })(TimerContainer)

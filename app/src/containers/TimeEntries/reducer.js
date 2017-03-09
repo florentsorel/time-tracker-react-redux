@@ -1,16 +1,16 @@
-import { ADD_TIME_ENTRY, ADD_CURRENT_TIME, RESET_CURRENT_TIME, ADD_CURRENT_TEXT, TOGGLE_TIMER_STATUS } from './constants'
+import { ADD_TIME_ENTRY, RESET_CURRENT_TIME, ADD_CURRENT_TEXT, START_TIMER, STOP_TIMER } from './constants'
 
 const initialState = [
   {
     id: 1,
     text: 'Modification de la fonction render',
-    duration: "00:05:24",
+    duration: 7675,
     projectId: 1,
   },
   {
     id: 2,
     text: 'Modification la fonction connect',
-    duration: "02:32:46",
+    duration: 3852,
     projectId: 2,
   }
 ]
@@ -34,17 +34,19 @@ export function timeEntries(state = initialState, action) {
 
 export function currentTimeEntry(state = {
   text: null,
-  duration: null,
   isRunning: false,
+  startTime: null,
+  endTime: null,
 }, action) {
   switch (action.type) {
-    case ADD_CURRENT_TIME:
     case RESET_CURRENT_TIME:
-      return {...state, duration: action.duration }
+      return {...state, startTime: null, endTime: null, text: null, isRunning: false }
     case ADD_CURRENT_TEXT:
       return {...state, text: action.text }
-    case TOGGLE_TIMER_STATUS:
-      return {...state, isRunning: !action.isRunning }
+    case START_TIMER:
+      return {...state, startTime: action.startTime, isRunning: true }
+    case STOP_TIMER:
+      return {...state, endTime: action.endTime, isRunning: false }
     default:
       return state
   }

@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { addCurrentTimeEntry  } from '../actions'
 
 class Timer extends Component {
 
@@ -10,7 +9,7 @@ class Timer extends Component {
     this.state = {
       hours: this.props.hours,
       minutes: this.props.minutes,
-      seconds: this.props.seconds
+      seconds: this.props.seconds,
     }
   }
 
@@ -45,9 +44,9 @@ class Timer extends Component {
   }
 
   tick() {
-    let seconds = this.state.seconds;
-    let minutes = this.state.minutes;
-    let hours = this.state.hours;
+    let seconds = this.state.seconds
+    let minutes = this.state.minutes
+    let hours = this.state.hours
 
     seconds = seconds + 1;
 
@@ -63,17 +62,14 @@ class Timer extends Component {
     }
 
     this.update(hours, seconds, minutes);
-    this.props.addCurrentTimeEntry(this.renderTime())
   }
 
   update(hours, seconds, minutes) {
     this.setState({
       hours: hours,
       seconds: seconds,
-      minutes: minutes
+      minutes: minutes,
     });
-
-    this.props.onChange(this.renderTime())
   }
 
   zeroPad(value) {
@@ -104,5 +100,4 @@ Timer.defaultProps = {
   seconds: 0,
 }
 
-const actions = { addCurrentTimeEntry }
-export default connect(null, actions)(Timer)
+export default connect((state) => ({ startTime: state.currentTimeEntry.startTime}))(Timer)

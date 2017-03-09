@@ -1,19 +1,19 @@
-import { ADD_TIME_ENTRY, ADD_CURRENT_TIME, RESET_CURRENT_TIME, ADD_CURRENT_TEXT, TOGGLE_TIMER_STATUS } from 'containers/TimeEntries/constants'
+import { ADD_TIME_ENTRY, RESET_CURRENT_TIME, ADD_CURRENT_TEXT, START_TIMER, STOP_TIMER } from 'containers/TimeEntries/constants'
+import { getDuration } from 'selectors'
 
-export const addTimeEntry = (text, duration) => ({
-  type: ADD_TIME_ENTRY,
-  text,
-  duration
-})
+export const addTimeEntry = text => (dispatch, getState) => {
 
-export const addCurrentTimeEntry = (duration) => ({
-  type: ADD_CURRENT_TIME,
-  duration
-})
+  const duration = getDuration(getState())
 
-export const resetCurrentTimeEntry = (duration) => ({
-  type: RESET_CURRENT_TIME,
-  duration
+  return dispatch({
+    type: ADD_TIME_ENTRY,
+    text,
+    duration
+  })
+}
+
+export const resetCurrentTimeEntry = () => ({
+  type: RESET_CURRENT_TIME
 })
 
 export const addCurrentTextEntry = (text) => ({
@@ -21,7 +21,12 @@ export const addCurrentTextEntry = (text) => ({
   text
 })
 
-export const toggleTimerStatus = (isRunning) => ({
-  type: TOGGLE_TIMER_STATUS,
-  isRunning
+export const stopTimer = (endTime) => ({
+  type: STOP_TIMER,
+  endTime
+})
+
+export const startTimer = (startTime) => ({
+  type: START_TIMER,
+  startTime
 })
