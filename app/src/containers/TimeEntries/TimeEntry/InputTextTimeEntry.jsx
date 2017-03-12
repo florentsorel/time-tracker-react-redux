@@ -12,6 +12,7 @@ class InputTextTimeEntry extends Component {
         className="time-entry-text mod-input"
         ref={(input) => this.input = input}
         type="text" defaultValue={this.props.value}
+        style={{width: this.props.width + 'px'}}
         onBlur={this.props.onBlur} />
     )
   }

@@ -34,17 +34,19 @@ class TextTimeEntry extends Component {
     if (this.state.edit === true) {
       return <InputTextTimeEntry
         value={text}
-        onBlur={this.handleBlur} />
+        onBlur={this.handleBlur}
+        width={this.text.offsetWidth} />
     }
 
     return (
       <div
+        ref={(el) => this.text = el}
         className={classNames({
           'time-entry-text': true,
           'mod-empty': text === null
         })}
-         data-placeholder="Add task description"
-         onClick={this.handleClick}>
+        data-placeholder="Add task description"
+        onClick={this.handleClick} >
         {text}
       </div>
     )

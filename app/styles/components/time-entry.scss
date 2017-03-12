@@ -9,9 +9,14 @@
 
     .time-entry-text {
         flex: 0 1 auto;
-        max-width: 50%;
+        min-width: 160px;
+        max-width: 400px;
+        line-height: 60px;
         padding-right: $line-height-computed / 2;
         padding-left: $line-height-computed;
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
         &.mod-empty {
             min-width: 270px;
             &:before {
@@ -20,9 +25,11 @@
             }
         }
         &.mod-input {
+            max-width: 400px;
             font-size: 14px;
             border: none;
-            min-width: 400px;
+            text-overflow: initial;
+            overflow: visible;
             box-shadow: inset 0 -1px 0 0 #ECEDED;
             &:focus {
                 outline: none;

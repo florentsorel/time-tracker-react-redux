@@ -3,7 +3,7 @@ import { ADD_TIME_ENTRY, RESET_CURRENT_TIME, ADD_CURRENT_TEXT, START_TIMER, STOP
 const initialState = [
   {
     id: 1,
-    text: 'Modification de la fonction render',
+    text: 'Mise en place d\'un input qui remplace la div contenant la description',
     duration: 7675,
     projectId: 1,
   },
