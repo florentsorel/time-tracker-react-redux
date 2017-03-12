@@ -39,5 +39,5 @@ export const startTimer = (startTime) => ({
 export const onEditText = (id, text) => ({
   type: UPDATE_TEXT_ENTRY,
   id,
-  text
+  text: text != '' ? text : null
 })
