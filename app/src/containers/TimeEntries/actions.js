@@ -16,10 +16,15 @@ export const resetCurrentTimeEntry = () => ({
   type: RESET_CURRENT_TIME
 })
 
-export const addCurrentTextEntry = (text) => ({
-  type: ADD_CURRENT_TEXT,
-  text
-})
+export const addCurrentTextEntry = (text) => {
+
+  if (text.length === 0) text = null
+
+  return {
+    type: ADD_CURRENT_TEXT,
+    text
+  }
+}
 
 export const stopTimer = (endTime) => ({
   type: STOP_TIMER,

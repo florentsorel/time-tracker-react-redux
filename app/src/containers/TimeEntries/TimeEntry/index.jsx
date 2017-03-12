@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getProjectById } from 'selectors'
 import moment from 'moment'
 import * as duration from "moment-duration-format"
+import TextTimeEntry from './TextTimeEntry'
 
 const TimeEntry = ({
   entry,
@@ -10,9 +11,8 @@ const TimeEntry = ({
 }) => {
   return (
     <li className="time-entry">
-      <div className="time-entry-text">
-        {entry.text}
-      </div>
+      <TextTimeEntry
+        text={entry.text} />
       {
         project &&
           <div className="time-entry-selected-project">
