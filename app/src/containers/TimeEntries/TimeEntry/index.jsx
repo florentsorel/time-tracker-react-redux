@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { getProjectById } from 'selectors'
 import moment from 'moment'
-require("moment-duration-format")
+import * as duration from "moment-duration-format"
 
 const TimeEntry = ({
   entry,
