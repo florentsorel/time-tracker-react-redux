@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { onEditText } from '../actions'
 import { getProjectById } from 'selectors'
 import moment from 'moment'
 import * as duration from "moment-duration-format"
@@ -7,12 +8,15 @@ import TextTimeEntry from './TextTimeEntry'
 
 const TimeEntry = ({
   entry,
-  project
+  project,
+  onEditText
 }) => {
   return (
     <li className="time-entry">
       <TextTimeEntry
-        text={entry.text} />
+        text={entry.text}
+        entryId={entry.id}
+        onEditText={onEditText}/>
       {
         project &&
           <div className="time-entry-selected-project">
@@ -46,4 +50,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(TimeEntry)
+export default connect(
+  mapStateToProps,
+  { onEditText }
+)(TimeEntry)

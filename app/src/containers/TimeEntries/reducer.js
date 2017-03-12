@@ -1,4 +1,4 @@
-import { ADD_TIME_ENTRY, RESET_CURRENT_TIME, ADD_CURRENT_TEXT, START_TIMER, STOP_TIMER } from './constants'
+import { ADD_TIME_ENTRY, UPDATE_TEXT_ENTRY, RESET_CURRENT_TIME, ADD_CURRENT_TEXT, START_TIMER, STOP_TIMER } from './constants'
 
 const initialState = [
   {
@@ -15,6 +15,23 @@ const initialState = [
   }
 ]
 
+const timeEntry = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_TEXT_ENTRY:
+      if (state.id !== action.id) {
+        return state
+      }
+
+      return {
+        ...state,
+        text: action.text
+      }
+
+    default:
+      return state
+  }
+}
+
 export function timeEntries(state = initialState, action) {
   switch (action.type) {
     case ADD_TIME_ENTRY:
@@ -27,6 +44,8 @@ export function timeEntries(state = initialState, action) {
         },
         ...state
       ]
+    case UPDATE_TEXT_ENTRY:
+      return state.map(t => timeEntry(t, action))
     default:
       return state
   }

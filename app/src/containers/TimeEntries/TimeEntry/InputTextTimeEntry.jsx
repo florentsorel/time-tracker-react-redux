@@ -13,6 +13,7 @@ class InputTextTimeEntry extends Component {
         ref={(input) => this.input = input}
         type="text" defaultValue={this.props.value}
         style={{width: this.props.width + 'px'}}
+        onChange={(e) => this.props.onChange(e.target.value)}
         onBlur={this.props.onBlur} />
     )
   }

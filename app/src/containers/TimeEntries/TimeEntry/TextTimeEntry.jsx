@@ -7,6 +7,8 @@ class TextTimeEntry extends Component {
 
   state = {
     edit: false,
+    textWidth: 160,
+    newValue: null,
   }
 
   constructor() {
@@ -14,6 +16,12 @@ class TextTimeEntry extends Component {
 
     this.handleClick = this.handleClick.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({
+      textWidth: this.refs.text.offsetWidth,
+    })
   }
 
   handleClick() {
@@ -26,6 +34,10 @@ class TextTimeEntry extends Component {
     this.setState({
       edit: false
     })
+
+    const newValue = this.state.newValue != null ? this.state.newValue : this.props.text
+
+    this.props.onEditText(this.props.entryId, newValue)
   }
 
   render() {
@@ -34,13 +46,14 @@ class TextTimeEntry extends Component {
     if (this.state.edit === true) {
       return <InputTextTimeEntry
         value={text}
-        onBlur={this.handleBlur}
-        width={this.text.offsetWidth} />
+        width={this.state.textWidth}
+        onChange={(value) => this.setState({newValue: value})}
+        onBlur={this.handleBlur} />
     }
 
     return (
       <div
-        ref={(el) => this.text = el}
+        ref="text"
         className={classNames({
           'time-entry-text': true,
           'mod-empty': text === null
