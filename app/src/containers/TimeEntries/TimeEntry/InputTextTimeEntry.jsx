@@ -1,11 +1,26 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 
-const InputTextTimeEntry = ({ value, onBlur }) => (
-  <input type="text" defaultValue={value} onBlur={onBlur} />
-)
+class InputTextTimeEntry extends Component {
+
+  componentDidMount() {
+    this.input.focus()
+  }
+
+  render() {
+    return (
+      <input
+        className="time-entry-text mod-input"
+        ref={(input) => this.input = input}
+        type="text" defaultValue={this.props.value}
+        onBlur={this.props.onBlur} />
+    )
+  }
+
+}
 
 InputTextTimeEntry .propTypes = {
-  text: PropTypes.string
+  value: PropTypes.string,
+  onBlur: PropTypes.func
 }
 
 export default InputTextTimeEntry

@@ -32,7 +32,9 @@ class TextTimeEntry extends Component {
     const { text } = this.props
 
     if (this.state.edit === true) {
-      return <InputTextTimeEntry value={text} onBlur={this.handleBlur}/>
+      return <InputTextTimeEntry
+        value={text}
+        onBlur={this.handleBlur} />
     }
 
     return (
