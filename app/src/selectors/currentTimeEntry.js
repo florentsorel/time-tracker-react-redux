@@ -1,8 +1,8 @@
 import moment from 'moment'
 
 export const getDuration = (state) => {
-  const startTime = moment(state.currentTimeEntry.startTime)
-  const endTime = moment(state.currentTimeEntry.endTime)
+  const startTime = state.currentTimeEntry.startTime
+  const endTime = state.currentTimeEntry.endTime
 
   return moment.duration(endTime.diff(startTime));
 }

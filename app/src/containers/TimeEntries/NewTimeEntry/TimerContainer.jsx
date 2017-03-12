@@ -4,6 +4,8 @@ import { resetCurrentTimeEntry, stopTimer, startTimer } from '../actions'
 import Timer from './Timer.jsx'
 import TimerButton from './TimerButton.jsx'
 
+import moment from 'moment'
+
 class TimerContainer extends Component {
 
   constructor() {
@@ -15,12 +17,12 @@ class TimerContainer extends Component {
   handleClick() {
     const props = this.props
     if (props.isRunning === true) {
-      props.stopTimer(new Date())
+      props.stopTimer(moment())
       props.onStopClick()
       props.resetCurrentTimeEntry()
     }
     else {
-      props.startTimer(new Date())
+      props.startTimer(moment())
     }
   }
 
