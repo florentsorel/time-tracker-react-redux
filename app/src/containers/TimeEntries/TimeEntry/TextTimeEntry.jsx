@@ -18,15 +18,10 @@ class TextTimeEntry extends Component {
     this.handleBlur = this.handleBlur.bind(this)
   }
 
-  componentDidMount() {
-    this.setState({
-      textWidth: this.refs.text.offsetWidth,
-    })
-  }
-
   handleClick() {
     this.setState({
       edit: true,
+      textWidth: this.refs.text.offsetWidth,
     })
   }
 
